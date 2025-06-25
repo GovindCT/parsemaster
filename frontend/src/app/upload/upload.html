@@ -1,0 +1,9 @@
+<h1> Upload Log File</h1>
+
+
+<form (submit)="onSubmit()" enctype="multipart/form-data">
+    <input type="file" (change)="onFileSelected($event)" accept=".log,.txt" />
+    <button type="submit">Upload</button>
+</form>
+
+<p*ngIf="uploadMessage">{{ uploadMessage }}</p>
