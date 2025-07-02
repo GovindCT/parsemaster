@@ -2,8 +2,32 @@
 
 
 <form (submit)="onSubmit()" enctype="multipart/form-data">
-    <input type="file" (change)="onFileSelected($event)" accept=".log,.txt" />
+    <input type="file" (change)="onFileSelected($event)" accept=".xml" />
     <button type="submit">Upload</button>
 </form>
 
 <p *ngIf="uploadMessage">{{ uploadMessage }}</p>
+
+
+<hr>
+
+<div *ngIf="failedAttempts.length > 0">
+  <h3>Failed Login Attempts</h3>
+
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Username</th>
+        <th>IP Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attempt of failedAttempts">
+        <td>{{ attempt.timestamp }}</td>
+        <td>{{ attempt.username }}</td>
+        <td>{{ attempt.ip }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
